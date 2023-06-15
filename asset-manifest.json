@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Kuehne-Nagel-Task/static/css/main.d2c148a4.css",
+    "main.js": "/Kuehne-Nagel-Task/static/js/main.0d68bfbb.js",
+    "index.html": "/Kuehne-Nagel-Task/index.html",
+    "main.d2c148a4.css.map": "/Kuehne-Nagel-Task/static/css/main.d2c148a4.css.map",
+    "main.0d68bfbb.js.map": "/Kuehne-Nagel-Task/static/js/main.0d68bfbb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d2c148a4.css",
+    "static/js/main.0d68bfbb.js"
+  ]
+}
