@@ -2,7 +2,6 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FaIdCardAlt, FaTimes } from 'react-icons/fa';
 import { ShipmentInfo } from 'components/ShipmentInfo/ShipmentInfo';
-
 import {
   Table,
   TableHead,
@@ -17,103 +16,69 @@ import {
 export class ShipmentsTable extends Component {
   state = {
     showModal: false,
-    orderNo: '',
-    date: '',
-    customer: '',
-    trackingNo: '',
-    status: '',
-    consignee: '',
+    shipment: {},
   };
 
-  toggleModal = (orderNo, date, customer, trackingNo, status, consignee) => {
+  toggleModal = shipment => {
     this.setState({
       showModal: !this.state.showModal,
-      orderNo,
-      date,
-      customer,
-      trackingNo,
-      status,
-      consignee,
+
+      shipment,
     });
   };
 
   render() {
     const { data, onDelete } = this.props;
-    const {
-      orderNo,
-      date,
-      customer,
-      trackingNo,
-      status,
-      consignee,
-      showModal,
-    } = this.state;
+    const { showModal, shipment } = this.state;
     return (
       <>
         <Table>
           <TableHead>
             <TableRow>
-              <TableHeader>OrderNo</TableHeader>
-              <TableHeader>DeliveryDate</TableHeader>
-              <TableHeader>Customer</TableHeader>
-              <TableHeader>TrackingNo</TableHeader>
-              <TableHeader>Status</TableHeader>
-              <TableHeader>Consignee</TableHeader>
+              <TableHeader>ORDERNO</TableHeader>
+              <TableHeader>DELIVERYDATE</TableHeader>
+              <TableHeader>CUSTOMER</TableHeader>
+              <TableHeader>TRACKINGNO</TableHeader>
+              <TableHeader>STATUS</TableHeader>
+              <TableHeader>CONSIGNEE</TableHeader>
               <TableHeader></TableHeader>
             </TableRow>
           </TableHead>
 
           <TableBody>
-            {data.map(
-              (
-                { orderNo, date, customer, trackingNo, status, consignee },
-                index
-              ) => {
-                return (
-                  <TableRow key={orderNo}>
-                    <TableData>{orderNo}</TableData>
-                    <TableData>{date}</TableData>
-                    <TableData>{customer}</TableData>
-                    <TableData>{trackingNo}</TableData>
-                    <TableData>{status}</TableData>
-                    <TableData>{consignee}</TableData>
-                    <TableData>
-                      <DetailsButton
-                        type="button"
-                        onClick={() =>
-                          this.toggleModal(
-                            orderNo,
-                            date,
-                            customer,
-                            trackingNo,
-                            status,
-                            consignee
-                          )
-                        }
-                      >
-                        <FaIdCardAlt />
-                      </DetailsButton>
-                      <DeleteButton
-                        type="button"
-                        onClick={() => onDelete(orderNo)}
-                      >
-                        <FaTimes />
-                      </DeleteButton>
-                    </TableData>
-                  </TableRow>
-                );
-              }
-            )}
+            {data.map(shipment => {
+              const { orderNo, date, customer, trackingNo, status, consignee } =
+                shipment;
+              return (
+                <TableRow key={orderNo}>
+                  <TableData>{shipment.orderNo}</TableData>
+                  <TableData>{date}</TableData>
+                  <TableData>{customer} </TableData>
+                  <TableData>{trackingNo}</TableData>
+                  <TableData>{status}</TableData>
+                  <TableData>{consignee}</TableData>
+                  <TableData>
+                    <DetailsButton
+                      type="button"
+                      onClick={() => this.toggleModal(shipment)}
+                    >
+                      <FaIdCardAlt />
+                    </DetailsButton>
+                    <DeleteButton
+                      type="button"
+                      onClick={() => onDelete(orderNo)}
+                    >
+                      <FaTimes />
+                    </DeleteButton>
+                  </TableData>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
         {showModal && (
           <ShipmentInfo
-            orderNo={orderNo}
-            date={date}
-            customer={customer}
-            trackingNo={trackingNo}
-            status={status}
-            consignee={consignee}
+            shipment={shipment}
             handleModal={this.toggleModal}
           ></ShipmentInfo>
         )}
@@ -122,7 +87,7 @@ export class ShipmentsTable extends Component {
   }
 }
 ShipmentsTable.propTypes = {
-  items: PropTypes.arrayOf(
+  data: PropTypes.arrayOf(
     PropTypes.exact({
       orderNo: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,

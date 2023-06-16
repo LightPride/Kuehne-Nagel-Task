@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   Backdrop,
   ShipmentForm,
@@ -28,8 +29,7 @@ export class ShipmentInfo extends Component {
     }
   };
   render() {
-    const { orderNo, date, customer, trackingNo, status, consignee } =
-      this.props;
+    const { shipment } = this.props;
     return (
       <Backdrop onClick={this.handleBackdropClose}>
         <Modal>
@@ -38,12 +38,22 @@ export class ShipmentInfo extends Component {
           <ShipmentForm>
             <FormLabel htmlFor="">
               OrderNo
-              <FormInput type="text" name="OrderNo" disabled value={orderNo} />
+              <FormInput
+                type="text"
+                name="OrderNo"
+                disabled
+                value={shipment.orderNo}
+              />
             </FormLabel>
 
             <FormLabel htmlFor="">
               Date
-              <FormInput type="text" name="Date" disabled value={date} />
+              <FormInput
+                type="text"
+                name="Date"
+                disabled
+                value={shipment.date}
+              />
             </FormLabel>
             <FormLabel htmlFor="">
               Customer
@@ -51,7 +61,7 @@ export class ShipmentInfo extends Component {
                 type="text"
                 name="Customer"
                 disabled
-                value={customer}
+                value={shipment.customer}
               />
             </FormLabel>
             <FormLabel htmlFor="">
@@ -60,7 +70,7 @@ export class ShipmentInfo extends Component {
                 type="text"
                 name="TrackingNo"
                 disabled
-                value={trackingNo}
+                value={shipment.trackingNo}
               />
             </FormLabel>
             <FormLabel htmlFor="">
@@ -69,12 +79,17 @@ export class ShipmentInfo extends Component {
                 type="text"
                 name="Consignee"
                 disabled
-                value={consignee}
+                value={shipment.consignee}
               />
             </FormLabel>
             <FormLabel htmlFor="">
               Status
-              <FormInput type="text" name="Status" disabled value={status} />
+              <FormInput
+                type="text"
+                name="Status"
+                disabled
+                value={shipment.status}
+              />
             </FormLabel>
           </ShipmentForm>
           <LineBottom />
@@ -83,3 +98,14 @@ export class ShipmentInfo extends Component {
     );
   }
 }
+
+ShipmentInfo.propTypes = {
+  shipment: PropTypes.exact({
+    orderNo: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    customer: PropTypes.string.isRequired,
+    trackingNo: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    consignee: PropTypes.string.isRequired,
+  }),
+};

@@ -1,13 +1,15 @@
 // in case if server was overloaded
 import data from './shipments.json';
+// if server is okay
+// import * as API from 'api';
 import { ShipmentsTable } from './ShipmentsTable/ShipmentsTable';
 import { Component } from 'react';
 
-// import * as API from 'api';
 export class App extends Component {
   state = {
     // in case if server was overloaded
     //shipments: data
+    //if server is okay
     shipments: data,
     isLoading: false,
     error: false,

@@ -13,13 +13,16 @@ export const TableHead = styled.thead``;
 export const TableRow = styled.tr``;
 
 export const TableHeader = styled.th`
-  background-color: rgb(0, 188, 213);
-  color: white;
-
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 8px;
-  padding-right: 8px;
+  background-color: rgb(245, 249, 252);
+  color: rgb(162, 168, 173);
+  text-align: left;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.4mm;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  border-bottom: 1px solid rgb(231, 227, 227);
   &:first-of-type {
     border-top-left-radius: 10px 10px;
   }
@@ -32,15 +35,14 @@ export const TableBody = styled.tbody``;
 
 export const TableData = styled.td`
   padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  border-bottom: 1px solid rgb(231, 227, 227);
   font-size: 12px;
   line-height: 1.71;
   letter-spacing: 0.01em;
-  background-color: ${props => {
-    return props.index % 2 === 0 ? 'white' : 'rgb(236,241,244)';
-  }};
+  background-color: #ffffff;
+  color: rgb(121, 125, 128);
 `;
 
 export const DeleteButton = styled.button`
