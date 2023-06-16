@@ -1,52 +1,47 @@
-// in case if server was overloaded
+// in case if server was overloaded use this
 import data from './shipments.json';
-// if server is okay
+// if server is okay use this
 // import * as API from 'api';
 import { ShipmentsTable } from './ShipmentsTable/ShipmentsTable';
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 
-export class App extends Component {
-  state = {
-    // in case if server was overloaded
-    //shipments: data
-    //if server is okay
-    shipments: data,
-    isLoading: false,
-    error: false,
-  };
+export function App() {
+  // in case if server was overloaded use this
+  const [shipments, setShipments] = useState(data);
+  //if server is okay use this
+  // const [shipments, setShipments] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  // async componentDidMount() {
+  //if server is okay use this
+  // useEffect(() => {
   //   try {
-  //     this.setState({ isLoading: true });
-  //     const shipments = await API.getShipments();
-  //     this.setState({ shipments, isLoading: false });
+  //     (async () => {
+  //       setLoading(true);
+  //       const shipments = await API.getShipments();
+  //       setShipments(shipments);
+  //       setLoading(false);
+  //     })();
   //   } catch (error) {
-  //     this.setState({ error: true, isLoading: false });
-  //     console.log(error);
+  //     setError(true);
+  //     setLoading(false);
   //   }
-  // }
+  // }, []);
 
-  deleteShipment = async orderNo => {
+  const deleteShipment = async orderNo => {
     // (in case if we want to delete data from API server too)
     // await API.deleteShipments(orderNo);
-    this.setState(prevState => ({
-      shipments: prevState.shipments.filter(
-        shipment => shipment.orderNo !== orderNo
-      ),
-    }));
+    setShipments(shipments.filter(shipment => shipment.orderNo !== orderNo));
   };
 
-  render() {
-    const { shipments } = this.state;
-    return (
-      <>
-        {this.state.error && <p>Something went wrong...</p>}
-        {this.state.isLoading ? (
-          'Loading'
-        ) : (
-          <ShipmentsTable data={shipments} onDelete={this.deleteShipment} />
-        )}
-      </>
-    );
-  }
+  return (
+    <>
+      {error && <p>Something went wrong...</p>}
+      {isLoading ? (
+        'Loading'
+      ) : (
+        <ShipmentsTable data={shipments} onDelete={deleteShipment} />
+      )}
+    </>
+  );
 }
