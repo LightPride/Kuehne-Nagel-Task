@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Kuehne-Nagel-Task/static/css/main.6a55ac77.css",
-    "main.js": "/Kuehne-Nagel-Task/static/js/main.78fb9cf8.js",
+    "main.js": "/Kuehne-Nagel-Task/static/js/main.31c165e6.js",
     "index.html": "/Kuehne-Nagel-Task/index.html",
     "main.6a55ac77.css.map": "/Kuehne-Nagel-Task/static/css/main.6a55ac77.css.map",
-    "main.78fb9cf8.js.map": "/Kuehne-Nagel-Task/static/js/main.78fb9cf8.js.map"
+    "main.31c165e6.js.map": "/Kuehne-Nagel-Task/static/js/main.31c165e6.js.map"
   },
   "entrypoints": [
     "static/css/main.6a55ac77.css",
-    "static/js/main.78fb9cf8.js"
+    "static/js/main.31c165e6.js"
   ]
 }
