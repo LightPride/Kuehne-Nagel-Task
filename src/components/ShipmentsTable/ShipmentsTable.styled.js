@@ -17,6 +17,7 @@ export const TableHeader = styled.th`
   color: rgb(162, 168, 173);
   text-align: left;
   font-size: 10px;
+  position: relative;
   font-weight: 500;
   letter-spacing: 0.4mm;
   padding-top: 15px;
@@ -43,6 +44,23 @@ export const TableData = styled.td`
   letter-spacing: 0.01em;
   background-color: #ffffff;
   color: rgb(121, 125, 128);
+`;
+
+export const SortButton = styled.button`
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: transparent;
+`;
+
+export const SortButtonWrapper = styled.div`
+  position: absolute;
+  top: 30%;
+  right: 0;
+  display: flex;
+  align-items: center;
 `;
 
 export const DeleteButton = styled.button`

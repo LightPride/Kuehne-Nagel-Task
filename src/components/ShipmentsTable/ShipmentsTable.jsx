@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaIdCardAlt, FaTimes } from 'react-icons/fa';
+import { BiSortAlt2 } from 'react-icons/bi';
 import { ShipmentInfo } from 'components/ShipmentInfo/ShipmentInfo';
 import {
   Table,
@@ -11,9 +12,11 @@ import {
   TableData,
   DeleteButton,
   DetailsButton,
+  SortButton,
+  SortButtonWrapper,
 } from './ShipmentsTable.styled';
 
-export function ShipmentsTable({ data, onDelete }) {
+export function ShipmentsTable({ data, onDelete, onSort }) {
   const [showModal, setShowModal] = useState(false);
   const [shipment, setShipment] = useState({});
 
@@ -29,10 +32,48 @@ export function ShipmentsTable({ data, onDelete }) {
           <TableRow>
             <TableHeader>ORDERNO</TableHeader>
             <TableHeader>DELIVERYDATE</TableHeader>
-            <TableHeader>CUSTOMER</TableHeader>
-            <TableHeader>TRACKINGNO</TableHeader>
-            <TableHeader>STATUS</TableHeader>
-            <TableHeader>CONSIGNEE</TableHeader>
+            <TableHeader>
+              CUSTOMER{' '}
+              <SortButtonWrapper>
+                {' '}
+                <SortButton
+                  onClick={onSort.bind(null, 'customer')}
+                  type="button"
+                >
+                  <BiSortAlt2 style={{ fill: '#a2a8ad' }} />
+                </SortButton>
+              </SortButtonWrapper>
+            </TableHeader>
+            <TableHeader>
+              TRACKINGNO{' '}
+              <SortButtonWrapper>
+                <SortButton
+                  onClick={onSort.bind(null, 'trackingNo')}
+                  type="button"
+                >
+                  <BiSortAlt2 style={{ fill: '#a2a8ad' }} />
+                </SortButton>
+              </SortButtonWrapper>
+            </TableHeader>
+            <TableHeader>
+              STATUS{' '}
+              <SortButtonWrapper>
+                <SortButton onClick={onSort.bind(null, 'status')} type="button">
+                  <BiSortAlt2 style={{ fill: '#a2a8ad' }} />
+                </SortButton>
+              </SortButtonWrapper>
+            </TableHeader>
+            <TableHeader>
+              CONSIGNEE
+              <SortButtonWrapper>
+                <SortButton
+                  onClick={onSort.bind(null, 'consignee')}
+                  type="button"
+                >
+                  <BiSortAlt2 style={{ fill: '#a2a8ad' }} />
+                </SortButton>
+              </SortButtonWrapper>
+            </TableHeader>
             <TableHeader></TableHeader>
           </TableRow>
         </TableHead>
